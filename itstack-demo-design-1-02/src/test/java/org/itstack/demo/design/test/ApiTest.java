@@ -24,11 +24,7 @@ public class ApiTest {
         extMap.put("consigneeUserPhone", "15200292123");
         extMap.put("consigneeUserAddress", "吉林省.长春市.双阳区.XX街道.檀溪苑小区.#18-2109");
 
-        commodityService_2.sendCommodity("10001","9820198721311","1023000020112221113",new HashMap<String, String>() {{
-            put("consigneeUserName", "谢飞机");
-            put("consigneeUserPhone", "15200292123");
-            put("consigneeUserAddress", "吉林省.长春市.双阳区.XX街道.檀溪苑小区.#18-2109");
-        }});
+        commodityService_2.sendCommodity("10001","9820198721311","1023000020112221113", extMap);
 
         // 3. 第三方兑换卡(爱奇艺)
         ICommodity commodityService_3 = storeFactory.getCommodityService(3);

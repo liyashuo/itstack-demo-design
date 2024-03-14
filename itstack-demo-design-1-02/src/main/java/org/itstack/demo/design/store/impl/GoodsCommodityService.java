@@ -17,10 +17,13 @@ public class GoodsCommodityService implements ICommodity {
 
     public void sendCommodity(String uId, String commodityId, String bizId, Map<String, String> extMap) throws Exception {
         DeliverReq deliverReq = new DeliverReq();
+        //用户名称和手机号需要根据 uId 查询获得
         deliverReq.setUserName(queryUserName(uId));
         deliverReq.setUserPhone(queryUserPhoneNumber(uId));
+
         deliverReq.setSku(commodityId);
         deliverReq.setOrderId(bizId);
+        //扩展信息
         deliverReq.setConsigneeUserName(extMap.get("consigneeUserName"));
         deliverReq.setConsigneeUserPhone(extMap.get("consigneeUserPhone"));
         deliverReq.setConsigneeUserAddress(extMap.get("consigneeUserAddress"));

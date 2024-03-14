@@ -11,11 +11,18 @@ import org.slf4j.LoggerFactory;
 
 /**
  * 模拟发奖服务
+ *
+ * 第一种实现方案
  */
 public class PrizeController {
 
     private Logger logger = LoggerFactory.getLogger(PrizeController.class);
 
+    /**
+     *  根据 getAwardType 来执行不同的方法
+     * @param req
+     * @return
+     */
     public AwardRes awardToUser(AwardReq req) {
         String reqJson = JSON.toJSONString(req);
         AwardRes awardRes = null;
@@ -33,13 +40,17 @@ public class PrizeController {
             } else if (req.getAwardType() == 2) {
                 GoodsService goodsService = new GoodsService();
                 DeliverReq deliverReq = new DeliverReq();
+                //uid 用户唯一ID
                 deliverReq.setUserName(queryUserName(req.getuId()));
                 deliverReq.setUserPhone(queryUserPhoneNumber(req.getuId()));
+
                 deliverReq.setSku(req.getAwardNumber());
                 deliverReq.setOrderId(req.getBizId());
+
                 deliverReq.setConsigneeUserName(req.getExtMap().get("consigneeUserName"));
                 deliverReq.setConsigneeUserPhone(req.getExtMap().get("consigneeUserPhone"));
                 deliverReq.setConsigneeUserAddress(req.getExtMap().get("consigneeUserAddress"));
+
                 Boolean isSuccess = goodsService.deliverGoods(deliverReq);
                 if (isSuccess) {
                     awardRes = new AwardRes("0000", "发放成功");

@@ -13,6 +13,7 @@
     <description>反例</description>
 
     <dependencies>
+<!--        注意!!! 这里引入了demo-1-00，所以才能使用里面的方法-->
         <dependency>
             <groupId>org.itstack</groupId>
             <artifactId>itstack-demo-design-1-00</artifactId>

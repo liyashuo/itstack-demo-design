@@ -13,6 +13,7 @@
     <description>工厂模式 Factory</description>
 
     <dependencies>
+<!--        这里引入了1-00-->
         <dependency>
             <groupId>org.itstack</groupId>
             <artifactId>itstack-demo-design-1-00</artifactId>
